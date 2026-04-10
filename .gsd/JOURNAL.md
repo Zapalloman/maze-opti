@@ -1,0 +1,2 @@
+# Development Journal
+*Empty.*

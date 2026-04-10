@@ -1,0 +1,2 @@
+# Global Todo List
+*Empty.*
