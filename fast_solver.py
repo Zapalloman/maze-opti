@@ -56,15 +56,10 @@ def solve(ascii_maze):
     ]
     
     maze_len = len(ascii_maze)
-    exit_index = -1
     exit_dir = None
-    goal_marker = ascii_maze.find('X')
     
     while queue:
         curr = queue.popleft()
-        if curr == goal_marker:
-            exit_index = curr
-            break
             
         for move, dest_offset, wall_offset in DIR_OFFSETS:
             wall_index = curr + wall_offset
@@ -72,16 +67,23 @@ def solve(ascii_maze):
                 continue
                 
             if ascii_maze[wall_index] == ' ':
+                # Detect boundary exits cleanly
+                is_boundary = (
+                    wall_index < line_width or
+                    wall_index >= maze_len - line_width or
+                    wall_index % line_width == 0 or
+                    wall_index % line_width == line_width - 2
+                )
+                
+                if is_boundary:
+                    parents[-1] = (curr, move)
+                    exit_dir = move
+                    break
+                    
                 dest_index = curr + dest_offset
-                if dest_index < 0 or dest_index >= maze_len or ascii_maze[dest_index] == '\n':
-                    if goal_marker == -1:
-                        parents[-1] = (curr, move)
-                        exit_dir = move
-                        break
-                else:
-                    if dest_index not in parents:
-                        parents[dest_index] = (curr, move)
-                        queue.append(dest_index)
+                if dest_index not in parents:
+                    parents[dest_index] = (curr, move)
+                    queue.append(dest_index)
         if exit_dir is not None:
             break
             
@@ -89,8 +91,6 @@ def solve(ascii_maze):
     if exit_dir is not None:
         path_moves.append(exit_dir)
         curr = parents[-1][0]
-    elif exit_index != -1:
-        curr = exit_index
     else:
         raise ValueError("No path found")
         
