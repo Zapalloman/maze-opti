@@ -1,3 +1,5 @@
+#benchmark tool
+
 import sys
 import time
 from maze_api.server import MazeGame
