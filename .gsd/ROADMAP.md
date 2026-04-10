@@ -1,11 +1,11 @@
 # ROADMAP.md
 
-> **Current Phase**: 2
+> **Current Phase**: 3
 > **Milestone**: v1.0
 
 ## Must-Haves (from SPEC)
 - [ ] Ultra-fast maze text parser to 1D mapping structure.
-- [ ] Specialized Python standard library BFS algorithm (non-object oriented).
+- [x] Specialized Python standard library BFS algorithm (non-object oriented).
 - [x] Direct integration block bridging the solver and `maze_api` over HTTP.
 
 ## Phases
@@ -16,7 +16,7 @@
 **Requirements**: REQ-01, REQ-04
 
 ### Phase 2: Core Algorithm Optimization (1D BFS)
-**Status**: ⬜ Not Started
+**Status**: ✅ Complete
 **Objective**: Skip matrix conversion completely. Load the ASCII text directly into a 1D list and calculate neighbor widths, deploying a tightly grouped `deque` search that traces from 'P' to 'X' at blazing speeds.
 **Requirements**: REQ-02, REQ-03
 
