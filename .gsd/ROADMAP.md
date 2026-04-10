@@ -1,17 +1,17 @@
 # ROADMAP.md
 
-> **Current Phase**: Not started
+> **Current Phase**: 2
 > **Milestone**: v1.0
 
 ## Must-Haves (from SPEC)
 - [ ] Ultra-fast maze text parser to 1D mapping structure.
 - [ ] Specialized Python standard library BFS algorithm (non-object oriented).
-- [ ] Direct integration block bridging the solver and `maze_api` over HTTP.
+- [x] Direct integration block bridging the solver and `maze_api` over HTTP.
 
 ## Phases
 
 ### Phase 1: High-Speed CLI and HTTP Pipeline
-**Status**: ⬜ Not Started
+**Status**: ✅ Complete
 **Objective**: Build out the thin interface layer. A rapid HTTP fetch logic for `/ascii` from the API, and simple CLI mapping to load mazes locally or remotely.
 **Requirements**: REQ-01, REQ-04
 
